@@ -30,19 +30,19 @@ class BankAccount {
       return $this->balance;
   }
 
-  public function deposer($montant) {
-      if ($montant > 0) {
-          $this->balance += $montant;
+  public function deposer($Amount) {
+      if ($Amount > 0) {
+          $this->balance += $Amount;
       } else {
-          echo "Le montant doit être positif.";
+          echo "The Amount must be positive .";
       }
   }
 
-  public function retirer($montant) {
-      if ($montant <= $this->balance) {
-          $this->balance -= $montant;
+  public function retirer($Amount) {
+      if ($Amount <= $this->balance) {
+          $this->balance -= $Amount;
       } else {
-          echo "balance insuffisant.";
+          echo "balance insufficient.";
       }
   }
 }

@@ -1,12 +1,14 @@
 <?php
-class Car {
-    public $marque;
-    public $model;
-    public $color;
+class Car
+{
+  public $marque;
+  public $model;
+  public $color;
 
-    public function start_up() {
-        echo "the car is start up.";
-    }
+  public function start_up()
+  {
+    echo "the car is start up.";
+  }
 }
 
 $myCar = new Car();
@@ -15,4 +17,3 @@ $myCar->model = "Clio";
 $myCar->color = "Blue";
 
 $myCar->start_up();
-?>
