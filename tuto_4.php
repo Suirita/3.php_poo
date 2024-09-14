@@ -4,7 +4,7 @@ class Animal
 {
   public function makeNoise()
   {
-    echo "L'animal fait du bruit.";
+    echo "the animal made noise.";
   }
 }
 

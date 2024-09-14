@@ -4,9 +4,16 @@ class Animal
   public $name;
   public $age;
 
+  // Constructor for Animal class
+  public function __construct($name, $age)
+  {
+    $this->name = $name;
+    $this->age = $age;
+  }
+
   public function eat()
   {
-    echo "I'm eating.";
+    echo "I'm eating.\n";
   }
 }
 
@@ -14,15 +21,15 @@ class Cat extends Animal
 {
   public $breed;
 
-  public function __construct($nom, $age, $breed)
+  public function __construct($name, $age, $breed)
   {
-    parent::__construct($nom, $age);
+    parent::__construct($name, $age);
     $this->breed = $breed;
   }
 
   public function meow()
   {
-    echo "Miaou !";
+    echo "Miaou!\n";
   }
 }
 
@@ -30,6 +37,14 @@ class Dog extends Animal
 {
   public function makeNoise()
   {
-    echo "Ouaf !";
+    echo "Ouaf!\n";
   }
 }
+
+$myCat = new Cat("Rawana", 2, "ma8rabi");
+$myCat->meow();
+$myCat->eat();
+
+$myDog = new Dog("Walo", 4);
+$myDog->makeNoise();
+$myDog->eat();
