@@ -102,20 +102,3 @@ $student_1->addCourse($course_1);
 $student_1->addCourse($course_2);
 
 $student_2->addCourse($course_1);
-
-// Using an ORM
-// Configuration de Doctrine (simplified)
-// use Doctrine\ORM\EntityManager;
-
-// $entityManager = EntityManager::create();
-
-// $author = new Author();
-// $author->setName('Dumas');
-
-// $book1 = new Book();
-// $book1->setTitre('the three Musketeers');
-// $book1->setAuthor($author);
-
-// $entityManager->persist($author);
-// $entityManager->persist($book1);
-// $entityManager->flush();

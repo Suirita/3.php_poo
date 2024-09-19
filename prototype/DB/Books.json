@@ -1,0 +1,16 @@
+[
+  {
+    "ISBN": "test",
+    "title": "test",
+    "author": "test",
+    "publication_date": "test",
+    "availability": true
+  },
+  {
+    "ISBN": "test2",
+    "title": "test2",
+    "author": "test2",
+    "publication_date": "test2",
+    "availability": true
+  }
+]
