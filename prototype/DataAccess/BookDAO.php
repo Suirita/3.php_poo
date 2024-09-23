@@ -6,12 +6,13 @@ class BookDAO
   public function getBooks()
   {
     $dataBase = new DataBase();
-    return $dataBase->retrieveData();
+    return $dataBase->Books;
   }
 
   public function setBook($book)
   {
     $dataBase = new DataBase();
-    $dataBase->storeData($book);
+    $dataBase->Books[] = $book;
+    $dataBase->saveData();
   }
 }

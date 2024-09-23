@@ -2,33 +2,33 @@
 
 class Database
 {
-  public function retrieveData()
+  public $Books = [];
+
+  public function __construct()
   {
-    $file_path = "../DB/DataBase.json";
-
-    if (!file_exists($file_path)) {
-      return [
-        "Books" => []
-      ];
-    }
-
-    $json = file_get_contents($file_path);
-
-    $Data = json_decode($json, true);
-
-    return $Data;
+    $this->retrieveData();
   }
 
-  public function storeData($data)
+  private function retrieveData()
   {
-    $file_path = "../DB/DataBase.json";
+    $file_path = "../DB/DataBase.txt";
 
-    $Data = $this->retrieveData();
+    if (file_exists($file_path)) {
+      $content = file_get_contents($file_path);
+      $Data = unserialize($content);
+      $this->Books = $Data->Books;
+    }
+  }
 
-    $Data['Books'][] = $data;
+  private function storeData()
+  {
+    $file_path = "../DB/DataBase.txt";
+    $Data = serialize($this);
+    file_put_contents($file_path, $Data);
+  }
 
-    $json = json_encode($Data, JSON_PRETTY_PRINT);
-
-    file_put_contents($file_path, $json);
+  public function saveData()
+  {
+    $this->storeData();
   }
 }
