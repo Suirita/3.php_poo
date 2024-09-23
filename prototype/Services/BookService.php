@@ -11,13 +11,7 @@ class BookService
 
   public function setBook($book)
   {
-    $new_book = [
-      'id' => $book->getId(),
-      'ISBN' => $book->getISBN(),
-      'title' => $book->getTitle(),
-    ];
-
     $bookDAO = new BookDAO();
-    $bookDAO->setBook($new_book);
+    $bookDAO->setBook($book);
   }
 }

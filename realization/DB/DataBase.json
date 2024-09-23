@@ -1,0 +1,45 @@
+{
+  "Books": [
+    {
+      "id": 1727013586,
+      "ISBN": "test1",
+      "title": "test1",
+      "publish_date": "test1",
+      "author": "test1"
+    },
+    {
+      "id": 1727027841,
+      "ISBN": "test2",
+      "title": "test2",
+      "publish_date": "test2",
+      "author": "test2"
+    }
+  ],
+  "Authors": [
+    {
+      "id": 1727041169,
+      "first_name": "test1",
+      "last_name": "test1",
+      "nationality": "test1"
+    }
+  ],
+  "Readers": [
+    {
+      "id": 1727041102,
+      "card_number": "test1",
+      "first_name": "test1",
+      "last_name": "test1",
+      "address": "test1"
+    }
+  ],
+  "Borrowings": [
+    {
+      "id": 1727041199,
+      "start_date": "test1",
+      "expected_return_date": "test1",
+      "actual_return_date": "test1",
+      "book": "test1",
+      "reader": "test1"
+    }
+  ]
+}

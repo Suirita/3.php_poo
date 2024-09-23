@@ -11,11 +11,11 @@ class BookPresentation
     $bookService = new BookService();
     $books = $bookService->getBooks();
 
-    if (!empty($books["Books"])) {
-      foreach ($books["Books"] as $bk) {
+    if (!empty($books)) {
+      foreach ($books as $bk) {
         echo "---------------------------------\n";
-        echo "ISBN: " . $bk['ISBN'] . "\n";
-        echo "Title: " . $bk['title'] . "\n";
+        echo "ISBN: " . $bk->getISBN() . "\n";
+        echo "Title: " . $bk->getTitle() . "\n";
       }
     } else {
       echo "No books available.\n";
