@@ -2,21 +2,39 @@
 
 class Database
 {
-  public function retrieveData()
+  public $Books = [];
+  public $Authors = [];
+  public $Readers = [];
+  public $Borrowings = [];
+
+  public function __construct()
   {
-    $file_path = "../DB/DataBase.json";
-
-    $json = file_get_contents($file_path);
-    $Data = json_decode($json, true);
-
-    return $Data;
+    $this->retrieveData();
   }
 
-  public function storeData($data)
+  private function retrieveData()
   {
-    $file_path = "../DB/DataBase.json";
+    $file_path = "../DB/DataBase.txt";
 
-    $json = json_encode($data, JSON_PRETTY_PRINT);
-    file_put_contents($file_path, $json);
+    if (file_exists($file_path)) {
+      $content = file_get_contents($file_path);
+      $Data = unserialize($content);
+      $this->Books = $Data->Books;
+      $this->Authors = $Data->Authors;
+      $this->Readers = $Data->Readers;
+      $this->Borrowings = $Data->Borrowings;
+    }
+  }
+
+  private function storeData()
+  {
+    $file_path = "../DB/DataBase.txt";
+    $Data = serialize($this);
+    file_put_contents($file_path, $Data);
+  }
+
+  public function saveData()
+  {
+    $this->storeData();
   }
 }

@@ -3,27 +3,27 @@ require("../DataAccess/ReaderDAO.php");
 
 class ReaderService
 {
-  public function getReaders()
+  public function viewReaders()
   {
     $readerDAO = new ReaderDAO();
-    $readerDAO->getReaders();
-    return $readerDAO["Readers"];
+    return $readerDAO->viewReaders();
   }
 
-  public function setReader($reader)
+  public function addReader($reader)
   {
-    $new_reader = [
-      'id' => $reader->getId(),
-      'card_number' => $reader->getCard_number(),
-      'first_name' => $reader->getFirst_name(),
-      'last_name' => $reader->getLast_name(),
-      'address' => $reader->getAddress()
-    ];
-
-    $readers = $this->getReaders();
-    $readers[] = $new_reader;
-
     $readerDAO = new ReaderDAO();
-    $readerDAO->setReader($readers);
+    $readerDAO->addReader($reader);
+  }
+
+  public function editReader($id, $editedReader)
+  {
+    $readerDAO = new ReaderDAO();
+    $readerDAO->editReader($id, $editedReader);
+  }
+
+  public function deleteReader($id)
+  {
+    $readerDAO = new ReaderDAO();
+    $readerDAO->deleteReader($id);
   }
 }

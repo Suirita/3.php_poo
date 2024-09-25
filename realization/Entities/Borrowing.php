@@ -6,7 +6,7 @@ class Borrowing
   private $start_date;
   private $expected_return_date;
   private $actual_return_date;
-  private $Book;
+  private $book;
   private $reader;
 
   public function __construct($start_date, $expected_return_date, $actual_return_date, $Book, $reader)
@@ -15,7 +15,7 @@ class Borrowing
     $this->start_date = $start_date;
     $this->expected_return_date = $expected_return_date;
     $this->actual_return_date = $actual_return_date;
-    $this->Book = $Book;
+    $this->book = $Book;
     $this->reader = $reader;
   }
 
@@ -56,12 +56,12 @@ class Borrowing
 
   public function getBook()
   {
-    return $this->Book;
+    return $this->book;
   }
 
-  public function setBook($Book)
+  public function setBook($book)
   {
-    $this->Book = $Book;
+    $this->book = $book;
   }
 
   public function getReader()

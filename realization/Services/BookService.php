@@ -3,29 +3,45 @@ require("../DataAccess/BookDAO.php");
 
 class BookService
 {
-  public function getBooks()
+  public function viewBooks()
   {
     $bookDAO = new BookDAO();
-    $bookDAO->getBooks();
-    return $bookDAO["Books"];
+    return $bookDAO->viewBooks();
   }
 
-  public function setBook($book)
+  public function viewAvailableBooks()
   {
-    $new_book = [
-      'id' => $book->getId(),
-      'ISBN' => $book->getISBN(),
-      'title' => $book->getTitle(),
-      'publish_date' => $book->getPublish_date(),
-      'author' => $book->getAuthor()
-    ];
-
-    $books = $this->getBooks();
-    $books[] = $new_book;
-
     $bookDAO = new BookDAO();
-    $bookDAO->setBook($books);
+    return $bookDAO->viewAvailableBooks();
   }
 
-  public function deleteBook($book) {}
+  public function searchBookByTitle($title)
+  {
+    $bookDAO = new BookDAO();
+    return $bookDAO->searchBookByTitle($title);
+  }
+
+  public function searchBookByISBN($ISBN)
+  {
+    $bookDAO = new BookDAO();
+    return $bookDAO->searchBookByISBN($ISBN);
+  }
+
+  public function addBook($book)
+  {
+    $bookDAO = new BookDAO();
+    $bookDAO->addBook($book);
+  }
+
+  public function editBook($id, $editedBook)
+  {
+    $bookDAO = new BookDAO();
+    $bookDAO->editBook($id, $editedBook);
+  }
+
+  public function deleteBook($id)
+  {
+    $bookDAO = new BookDAO();
+    $bookDAO->deleteBook($id);
+  }
 }

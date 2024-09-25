@@ -20,9 +20,9 @@ UC_ManageBook <.. UC_AdvancedSearch : <<extend>>
 UC_ManageBook <.. UC_DisplayBooksConsole : <<extend>>
 UC_ManageBook <.. UC_BorrowBook: <<extend>>
 
-Admin -- UC_ManageBook : "Manage"
-Admin -- UC_ManageAuthors : "Manage"
-Admin -- UC_ManageReaders : "Manage"
+Admin -- UC_ManageBook
+Admin -- UC_ManageAuthors
+Admin -- UC_ManageReaders
 
-Reader -- UC_ViewAvailableBooks : "View"
+Reader -- UC_ViewAvailableBooks
 @enduml

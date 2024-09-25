@@ -3,26 +3,27 @@ require("../DataAccess/AuthorDAO.php");
 
 class AuthorService
 {
-  public function getAuthors()
+  public function viewAuthors()
   {
     $authorDAO = new AuthorDAO();
-    $authorDAO->getAuthors();
-    return $authorDAO["Authors"];
+    return $authorDAO->viewAuthors();
   }
 
-  public function setAuthor($author)
+  public function addAuthor($author)
   {
-    $new_author = [
-      'id' => $author->getId(),
-      'first_name' => $author->getFirst_name(),
-      'last_name' => $author->getLast_name(),
-      'nationality' => $author->getNationality()
-    ];
-
-    $authors = $this->getAuthors();
-    $authors[] = $new_author;
-
     $authorDAO = new AuthorDAO();
-    $authorDAO->setAuthor($authors);
+    $authorDAO->addAuthor($author);
+  }
+
+  public function editAuthor($id, $editedAuthor)
+  {
+    $authorDAO = new AuthorDAO();
+    $authorDAO->editAuthor($id, $editedAuthor);
+  }
+
+  public function deleteAuthor($id)
+  {
+    $authorDAO = new AuthorDAO();
+    $authorDAO->deleteAuthor($id);
   }
 }

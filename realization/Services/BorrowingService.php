@@ -3,24 +3,27 @@ require("../DataAccess/BorrowingDAO.php");
 
 class BorrowingService
 {
-  public function getBorrowings()
+  public function viewBorrowings()
   {
     $borrowingDAO = new BorrowingDAO();
-    return $borrowingDAO->getBorrowings();
+    return $borrowingDAO->viewBorrowings();
   }
 
-  public function setBorrowing($borrowing)
+  public function addBorrowing($borrowing)
   {
-    $new_borrowing = [
-      'id' => $borrowing->getId(),
-      'start_date' => $borrowing->getStart_date(),
-      'expected_return_date' => $borrowing->getExpected_return_date(),
-      'actual_return_date' => $borrowing->getActual_return_date(),
-      'book' => $borrowing->getBook(),
-      'reader' => $borrowing->getReader()
-    ];
-
     $borrowingDAO = new BorrowingDAO();
-    $borrowingDAO->setBorrowing($new_borrowing);
+    $borrowingDAO->addBorrowing($borrowing);
+  }
+
+  public function editBorrowing($id, $editedBorrowing)
+  {
+    $borrowingDAO = new BorrowingDAO();
+    $borrowingDAO->editBorrowing($id, $editedBorrowing);
+  }
+
+  public function deleteBorrowing($id)
+  {
+    $borrowingDAO = new BorrowingDAO();
+    $borrowingDAO->deleteBorrowing($id);
   }
 }
