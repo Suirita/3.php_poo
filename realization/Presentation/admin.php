@@ -224,23 +224,23 @@ function library_management()
     echo "|------------------------------------|\n";
     echo "|    Please choose an action:        |\n";
     echo "|------------------------------------|\n";
-    echo "| [1] - Books management             |\n";
-    echo "| [2] - Authors management           |\n";
-    echo "| [3] - Readers management           |\n";
+    echo "| [b] - Books management             |\n";
+    echo "| [a] - Authors management           |\n";
+    echo "| [r] - Readers management           |\n";
     echo "| [exit] - Exit the program          |\n";
     echo "+------------------------------------+\n";
 
     $action = askQuestion("Your choice: ");
     switch ($action) {
-      case '1':
+      case 'b':
         book_management();
         break;
 
-      case '2':
+      case 'a':
         author_management();
         break;
 
-      case '3':
+      case 'r':
         reader_management();
         break;
 

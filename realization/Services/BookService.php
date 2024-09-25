@@ -27,6 +27,12 @@ class BookService
     return $bookDAO->searchBookByISBN($ISBN);
   }
 
+  public function searchBookByAuthor($author)
+  {
+    $bookDAO = new BookDAO();
+    return $bookDAO->searchBookByAuthor($author);
+  }
+
   public function addBook($book)
   {
     $bookDAO = new BookDAO();

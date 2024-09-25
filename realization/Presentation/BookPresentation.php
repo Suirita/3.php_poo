@@ -74,9 +74,20 @@ class BookPresentation
 
     $exitSearching = false;
     while (!$exitSearching) {
-      $action = askQuestion("Search by 'ISBN' or 'title' (or type 'back' to go back): ");
+      echo "+------------------------------------+\n";
+      echo "|            Book Search             |\n";
+      echo "|------------------------------------|\n";
+      echo "|     Please choose an action:       |\n";
+      echo "|------------------------------------|\n";
+      echo "| [t] - Search by Title              |\n";
+      echo "| [i] - Search by ISBN               |\n";
+      echo "| [a] - Search by Author             |\n";
+      echo "+------------------------------------+\n";
+      $action = askQuestion("Your choice: ");
+      echo "--------------------------------------\n";
+
       switch (strtolower($action)) {
-        case "title":
+        case "t":
           $exitSearching = true;
           $title = askQuestion("Enter the Title of the book (or type 'back' to go back): ");
           if (strtolower($title) === "back") {
@@ -85,8 +96,19 @@ class BookPresentation
 
           $bookService = new BookService();
           $book = $bookService->searchBookByTitle($title);
+
+          if (!empty($book)) {
+            echo "---------------------------------\n";
+            echo "ID: " . $book->getId() . "\n";
+            echo "ISBN: " . $book->getISBN() . "\n";
+            echo "Title: " . $book->getTitle() . "\n";
+            echo "Publish Date: " . $book->getPublish_date() . "\n";
+            echo "Author: " . $book->getAuthor() . "\n";
+            echo "---------------------------------\n\n";
+          }
           break;
-        case "isbn":
+
+        case "i":
           $exitSearching = true;
           $ISBN = askQuestion("Enter the ISBN of the book (or type 'back' to go back): ");
           if (strtolower($ISBN) === "back") {
@@ -95,7 +117,41 @@ class BookPresentation
 
           $bookService = new BookService();
           $book = $bookService->searchBookByISBN($ISBN);
+
+          if (!empty($book)) {
+            echo "---------------------------------\n";
+            echo "ID: " . $book->getId() . "\n";
+            echo "ISBN: " . $book->getISBN() . "\n";
+            echo "Title: " . $book->getTitle() . "\n";
+            echo "Publish Date: " . $book->getPublish_date() . "\n";
+            echo "Author: " . $book->getAuthor() . "\n";
+            echo "---------------------------------\n\n";
+          }
           break;
+
+        case "a":
+          $exitSearching = true;
+          $author = askQuestion("Enter the Author of the book (or type 'back' to go back): ");
+          if (strtolower($author) === "back") {
+            return;
+          }
+
+          $bookService = new BookService();
+          $books = $bookService->searchBookByAuthor($author);
+
+          if (!empty($books)) {
+            foreach ($books as $book) {
+              echo "---------------------------------\n";
+              echo "ID: " . $book->getId() . "\n";
+              echo "ISBN: " . $book->getISBN() . "\n";
+              echo "Title: " . $book->getTitle() . "\n";
+              echo "Publish Date: " . $book->getPublish_date() . "\n";
+              echo "Author: " . $book->getAuthor() . "\n";
+            }
+            echo "---------------------------------\n\n";
+          }
+          break;
+
         case 'back':
           $exitSearching = true;
           break;
@@ -104,16 +160,6 @@ class BookPresentation
           echo "\nInvalid choice. Please try again.\n\n";
           break;
       }
-    }
-
-    if (!empty($book)) {
-      echo "---------------------------------\n";
-      echo "ID: " . $book->getId() . "\n";
-      echo "ISBN: " . $book->getISBN() . "\n";
-      echo "Title: " . $book->getTitle() . "\n";
-      echo "Publish Date: " . $book->getPublish_date() . "\n";
-      echo "Author: " . $book->getAuthor() . "\n";
-      echo "---------------------------------\n\n";
     }
   }
 

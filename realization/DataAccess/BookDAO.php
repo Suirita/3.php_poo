@@ -48,7 +48,7 @@ class BookDAO
       }
     }
 
-    echo "\nNo book found with ID: $title\n\n";
+    echo "\nNo book found with Title: $title\n\n";
   }
 
   public function searchBookByISBN($ISBN)
@@ -63,8 +63,30 @@ class BookDAO
       }
     }
 
-    echo "\nNo book found with ID: $ISBN\n\n";
+    echo "\nNo book found with ISBN: $ISBN\n\n";
   }
+
+  public function searchBookByAuthor($author)
+  {
+    $dataBase = new Database();
+    $books = $dataBase->Books;
+    $foundBooks = [];
+    $bookFound = false;
+
+    foreach ($books as $book) {
+      if ($book->getAuthor() == $author) {
+        $foundBooks[] = $book;
+        $bookFound = true;
+      }
+    }
+
+    if ($bookFound == false) {
+      echo "\nNo book found with Author: $author\n\n";
+    } else {
+      return $foundBooks;
+    }
+  }
+
 
   public function addBook($book)
   {
